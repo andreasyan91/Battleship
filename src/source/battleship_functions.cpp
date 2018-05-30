@@ -36,7 +36,7 @@ void print(char** sea)
     std::cout<<" "<<i;
   }
   std::cout << "\n\n";
-  for(int i = 1; i <= size -1; ++i){
+  for (int i = 1; i <= size -1; ++i){
     std::cout << i << "  ";
     for(int j = 1; j <= size; ++j) {
       std::cout<<*(*(sea+i)+j)<<" ";
@@ -44,10 +44,10 @@ void print(char** sea)
     std::cout<<"\n";
   }
   std::cout << size;
-  for(int i = 1; i <= size; ++i) {
+  for (int i = 1; i <= size; ++i) {
     std::cout << " " << sea[size][i];
   }
-std::cout<<std::endl;
+std::cout<<std::endl<<std::endl;
 }
 ///Create playing board and assigns '0's to each point of the sea (playing board).
 int** create_real_sea()
