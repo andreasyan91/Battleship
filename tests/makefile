@@ -1,19 +1,25 @@
-#HEADERS := $(wildcard ../src/header/*.hpp) 
+
+
+OBJECT  := ../obj/battleship.o 
 SOURCES := $(wildcard ./*.cpp) 
-#OBJECTS := $(patsubst ./%.cpp, ../src/source/battleship_functions.cpp, ./%.o,./%o $(SOURCES))
-OBJECTS := $(patsubst ./%.cpp, ../src/source/.cpp, ./%.o $(SOURCES))
+OBJECTS := $(patsubst ./%.cpp, ./%.o, $(SOURCES))
 TARGET  := test.exe
-INCLUDE_PATH := -I../src/header
-DEPENDS := $(patsubst deps/%.dep, sr)
+INCLUDE_PATH := -I../src
 
-$(TARGET) : $(OBJECTS) #$(HEADERS)
-	      @echo "test.exe ..."
-			@g++ -std=c++11  $^ -o $@ 
+$(TARGET) : $(OBJECTS) 
+	@echo "test.exe ..."
+	@g++ -std=c++11  $^ $(OBJECT) -o $@ 
 
-$(OBJECTS) : $(SOURCES) 
-			@echo "text"
-			@g++ -std=c++11 -c  $<  $(INCLUDE_PATH)
+./%.o : ./%.cpp 
+	@echo "text"
+	@g++ -std=c++11 -c  $<  $(INCLUDE_PATH)
+
+clean :
+	@echo cleanig up...
+	@rm -f ./*.o ./*.exe
 
 test :
-	@./test.exe
+	
+	@echo sax lava
+#	@./test.exe
 		
